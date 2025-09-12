@@ -780,8 +780,8 @@ export class CPlusPlusRenderer extends ConvenienceRenderer {
                 this.variantIndirection(
                     classType,
                     ctx.needsForwardIndirection &&
-                        this.isForwardDeclaredType(classType) &&
-                        !isOptional,
+                    this.isForwardDeclaredType(classType) &&
+                    !isOptional,
                     [
                         this.ourQualifier(inJsonNamespace),
                         this.nameForNamedType(classType),
@@ -1142,13 +1142,13 @@ export class CPlusPlusRenderer extends ConvenienceRenderer {
                 pattern === undefined
                     ? this._nulloptType
                     : [
-                          this._stringType.getType(),
-                          "(",
-                          this._stringType.createStringLiteral([
-                              stringEscape(pattern),
-                          ]),
-                          ")",
-                      ],
+                        this._stringType.getType(),
+                        "(",
+                        this._stringType.createStringLiteral([
+                            stringEscape(pattern),
+                        ]),
+                        ")",
+                    ],
                 ")",
             ]);
         });
@@ -1864,7 +1864,9 @@ export class CPlusPlusRenderer extends ConvenienceRenderer {
                         }
 
                         this.emitLine(
-                            'default: throw std::runtime_error("Input JSON does not conform to schema!");',
+                            'default: throw std::runtime_error("Cannot deserialize to union \\"',
+                            variantType,
+                            '\\"");',
                         );
                     },
                 );
